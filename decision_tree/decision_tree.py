@@ -37,8 +37,8 @@ def process_data(dataset):
 
 
 def main():
-    train_dataset = pandas.read_csv('~/PycharmProjects/ML/assignment1/Data/train.csv')
-    test_dataset = pandas.read_csv('~/PycharmProjects/ML/assignment1/Data/test.csv')
+    train_dataset = pandas.read_csv('Data/train.csv')
+    test_dataset = pandas.read_csv('Data/test.csv')
     y = train_dataset['Survived']
     ids = np.array(test_dataset['PassengerId'])
     drop_ele = ['PassengerId', 'Name', 'Survived']
@@ -47,7 +47,7 @@ def main():
     test_dataset.drop(drop_ele, axis=1, inplace=True)
     x = process_data(train_dataset)
     x_test = process_data(test_dataset)
-    y_test = pandas.read_csv('~/PycharmProjects/ML/assignment1/Data/gender_submission.csv')['Survived']
+    y_test = pandas.read_csv('Data/gender_submission.csv')['Survived']
 
     clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=0, max_depth=3)
     clf_entropy.fit(x, y)
